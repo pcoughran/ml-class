@@ -17,11 +17,16 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
+    % theta1 * x1 + theta2 * x2 ...
+    hx = theta(1) * X(:,1) + theta(2) * X(:,2);
 
+    % one step of gradient descent
+    theta_one = theta(1) - (alpha * (1/m) * sum(hx - y));
+    theta_two = theta(2) - (alpha * (1/m) * sum((hx - y) .* X(:,2)));
 
-
-
-
+    % update variable simulaneously 
+    theta(1) = theta_one;
+    theta(2) = theta_two;
 
     % ============================================================
 
